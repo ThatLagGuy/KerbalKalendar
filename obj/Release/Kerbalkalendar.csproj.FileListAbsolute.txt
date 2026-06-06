@@ -1,0 +1,9 @@
+C:\Users\Mihoy Minoy\OneDrive\Desktop\KerbalKalendar\obj\Release\Kerbalkalendar.csproj.AssemblyReference.cache
+C:\Users\Mihoy Minoy\OneDrive\Desktop\KerbalKalendar\obj\Release\Kerbalkalendar.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mihoy Minoy\OneDrive\Desktop\KerbalKalendar\obj\Release\Kerbalkalendar.AssemblyInfoInputs.cache
+C:\Users\Mihoy Minoy\OneDrive\Desktop\KerbalKalendar\obj\Release\Kerbalkalendar.AssemblyInfo.cs
+C:\Users\Mihoy Minoy\OneDrive\Desktop\KerbalKalendar\obj\Release\Kerbalkalendar.csproj.CoreCompileInputs.cache
+C:\Users\Mihoy Minoy\OneDrive\Desktop\KerbalKalendar\GameData\KerbalKalendar\KerbalKalendar.dll
+C:\Users\Mihoy Minoy\OneDrive\Desktop\KerbalKalendar\GameData\KerbalKalendar\KerbalKalendar.pdb
+C:\Users\Mihoy Minoy\OneDrive\Desktop\KerbalKalendar\obj\Release\KerbalKalendar.dll
+C:\Users\Mihoy Minoy\OneDrive\Desktop\KerbalKalendar\obj\Release\KerbalKalendar.pdb

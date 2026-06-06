@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "zETZef8NCZk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Mihoy Minoy\\OneDrive\\Desktop\\KerbalKalendar\\Kerbalkalendar.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mihoy Minoy\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.3\\microsoft.netframework.referenceassemblies.1.0.3.nupkg.sha512",
+    "C:\\Users\\Mihoy Minoy\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net461\\1.0.3\\microsoft.netframework.referenceassemblies.net461.1.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,36 @@
+<!--
+  Directory.Build.props — Local developer overrides
+  ==================================================
+  This file is intentionally excluded from source control (.gitignore).
+  Each developer sets their own KSPRoot path here so the .csproj
+  never needs to be edited for local builds.
+
+  Copy this file to the same folder as KerbalKalendar.csproj and
+  set KSPRoot to your local KSP install directory.
+-->
+<Project>
+  <PropertyGroup>
+
+    <!-- Must be set here (before SDK targets load) to prevent duplicate Compile items -->
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+
+    <!--
+      Set this to your KSP install path.
+      Examples:
+
+      Steam default (Windows):
+        C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program
+
+      GOG (Windows):
+        C:\GOG Games\Kerbal Space Program
+
+      Linux Steam:
+        /home/USERNAME/.steam/steam/steamapps/common/Kerbal Space Program
+
+      macOS:
+        /Users/USERNAME/Library/Application Support/Steam/steamapps/common/Kerbal Space Program
+    -->
+    <KSPRoot>C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program</KSPRoot>
+
+  </PropertyGroup>
+</Project>

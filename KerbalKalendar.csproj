@@ -1,0 +1,119 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- ── Output ──────────────────────────────────────────────────── -->
+    <AssemblyName>KerbalKalendar</AssemblyName>
+    <RootNamespace>KerbalKalendar</RootNamespace>
+    <TargetFramework>net461</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+
+    <!-- Match KSP's output type -->
+    <OutputType>Library</OutputType>
+
+    <!-- Drop the DLL straight into GameData on build -->
+    <OutputPath>GameData\KerbalKalendar\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+
+    <!-- Suppress warnings that are noise in KSP mod development -->
+    <NoWarn>1701;1702;1591</NoWarn>
+
+    <!-- Assembly metadata -->
+    <Company>KerbalKalendar</Company>
+    <Product>Kerbal Kalendar</Product>
+    <Description>A Kerbin-native calendar system for Kerbal Space Program.</Description>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+
+    <!-- Don't copy referenced KSP DLLs to output — they live in KSP's own folders -->
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <!-- ── Debug configuration ──────────────────────────────────────── -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <Optimize>false</Optimize>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <!-- ── Release configuration ────────────────────────────────────── -->
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <!-- ── Source files ─────────────────────────────────────────────── -->
+  <ItemGroup>
+    <Compile Include="Source\KalendarData.cs" />
+    <Compile Include="Source\KerbalKalendar.cs" />
+    <Compile Include="Source\KalendarAPI.cs" />
+    <Compile Include="Source\KalendarDateDisplay.cs" />
+  </ItemGroup>
+
+  <!-- ── KSP References ───────────────────────────────────────────── -->
+  <!--
+    Set the KSPRoot property to your KSP install directory.
+    Recommended: add a Directory.Build.props file next to this .csproj
+    with your local path so it is never committed to source control.
+
+    Example Directory.Build.props:
+      <Project>
+        <PropertyGroup>
+          <KSPRoot>C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program</KSPRoot>
+        </PropertyGroup>
+      </Project>
+  -->
+  <PropertyGroup>
+    <KSPRoot Condition="'$(KSPRoot)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Kerbal Space Program</KSPRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Core KSP assembly -->
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(KSPRoot)\KSP_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <!-- Unity engine assemblies -->
+    <Reference Include="UnityEngine">
+      <HintPath>$(KSPRoot)\KSP_x64_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(KSPRoot)\KSP_x64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>$(KSPRoot)\KSP_x64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(KSPRoot)\KSP_x64_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- ── Post-build: copy DLL to KSP GameData if KSPRoot is set ───── -->
+  <!--
+    This copies the compiled DLL directly into your live KSP install
+    after every successful build so you can test immediately.
+    Only runs if KSPRoot resolves to a real directory.
+  -->
+  <Target Name="PostBuild" AfterTargets="Build" Condition="Exists('$(KSPRoot)')">
+    <Message Text="[KerbalKalendar] Copying DLL to KSP GameData..." Importance="high" />
+    <Copy
+      SourceFiles="$(OutputPath)KerbalKalendar.dll"
+      DestinationFolder="$(KSPRoot)\GameData\KerbalKalendar\"
+      SkipUnchangedFiles="true"
+    />
+    <Message Text="[KerbalKalendar] Done." Importance="high" />
+  </Target>
+
+</Project>

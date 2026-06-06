@@ -1,0 +1,20 @@
+# Build output
+bin/
+obj/
+GameData/KerbalKalendar/*.dll
+GameData/KerbalKalendar/*.pdb
+
+# Local developer overrides — never commit your personal KSP path
+Directory.Build.props
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
